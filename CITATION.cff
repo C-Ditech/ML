@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-- family-names: "Muhammad Ammaar"
-  given-names: "Nabil"
-- family-names: "Lisa"
-  given-names: "Mona"
+- family-names: "Nabil"
+  given-names: "Muhammad Ammar"
+- family-names: "Hadi"
+  given-names: "Alif Fadhlurrahman"
 title: "Feces Image Classification with MobileNet TransferLearning"
 version: 1.0.0
 date-released: 2023-06-01

@@ -9,28 +9,31 @@
   
 </div>
 
-## Table of Content
-* Table of Content
-* Overview
-* Dataset
-* Data Preparation
-* Data Modeling
-  * Architecture
-  * Hyperparameter Tuning
-* Result
+<details>
+  <summary><h2>Table of Content</h2></summary>
+  
+  * [Overview](#overview)
+  * [Dataset](#dataset)
+  * [Data Preparation](#dataprep)
+  * [Data Modeling](#datamodel)
+    * [Architecture](#architecture)
+    * [Hyperparameter Tuning](#tuning)
+  * [Result](#result)
+</details>
 
-## Overview
+<h2 id="overview">Overview</h2>
+C - Ditech is an Android application that aims to detect diseases in chickens through their feces. The application will be able to detect diseases such as Coccidiosis, Healthy, and Salmonella. Information about the disease and how to handle it will be provided in the app. Our team wants to tackle this problem to help farmers detect diseases early and take appropriate measures to prevent further spread and loss.
 
-## Dataset
+<h2 id="dataset">Dataset</h2>
 
-## Data Preparation
+<h2 id="dataprep">Data Preparation</h2>
 
-## Data Modeling
+<h2 id="datamodel">Data Modeling</h2>
 asdfasdsadf
 
-### Architecture
+<h3 id="architecture">Architecture</h3>
 
-### Hyperparameter Tuning
+<h3 id="tuning">Hyperparameter Tuning</h3>
 
-## Result
+<h2 id="result">Result</h2>
 

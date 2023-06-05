@@ -24,26 +24,19 @@
 
 <h2 id="overview">Overview</h2>
 
-  <p text-align="center">
-  
-    C - Ditech is an Android application that aims to detect diseases in chickens through their feces. The application will be able to detect diseases such as Coccidiosis, Healthy, and Salmonella. Information about the disease and how to handle it will be provided in the app. Our team wants to tackle this problem to help farmers detect diseases early and take appropriate measures to prevent further spread and loss.
-  
-  </p>
+C - Ditech is an Android application that aims to detect diseases in chickens through their feces. The application will be able to detect diseases such as Coccidiosis, Healthy, and Salmonella. Information about the disease and how to handle it will be provided in the app. Our team wants to tackle this problem to help farmers detect diseases early and take appropriate measures to prevent further spread and loss.
 
 <h2 id="dataset">Dataset</h2>
 
-  <p text-align="center">
-  
-    We use **Poultry Diseases Detection** dataset in [Kaggle](https://www.kaggle.com/datasets/kausthubkannan/poultry-diseases-detection) by Kausthub Kannan. The dataset consists of 4 directories. Each directory contains images in jpeg format. There are 4 classes 
+We use **Poultry Diseases Detection** dataset in [Kaggle](https://www.kaggle.com/datasets/kausthubkannan/poultry-diseases-detection) by Kausthub Kannan. The dataset consists of 4 directories. Each directory contains images in jpeg format. There are 4 classes 
 
-    * Coccidiosis (2103 images)
-    * Salmonella (2057 images)
-    * Newcastle diseases (376 images)
-    * Healthy poultry (2276 images)
+* Coccidiosis (2103 images)
+* Salmonella (2057 images)
+* Newcastle diseases (376 images)
+* Healthy poultry (2276 images)
 
-    The images are feces of the poultries with random image sizes and orientations. The total images in this dataset are 6812 images of feces and have a size of 8.64GB
+The images are feces of the poultries with random image sizes and orientations. The total images in this dataset are 6812 images of feces and have a size of 8.64GB
   
-  </p>
 
  
   

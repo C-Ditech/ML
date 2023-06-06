@@ -110,8 +110,8 @@ The model architecture of this model is simply. This is the detail of model:
 <h2 id="result">Result</h2>
 
 <div align="center">
-  
-  <img src="https://github.com/C-Ditech/ML/blob/main/assets/chart.png" width=85% height=85%>
+    
+  ![chart](https://github.com/C-Ditech/ML/blob/main/assets/chart.png)
 
   ![accuracy](https://github.com/C-Ditech/ML/blob/main/assets/accuracy.png)
 

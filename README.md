@@ -17,6 +17,7 @@
   * [Data Preparation](#dataprep)
   * [Data Modeling](#datamodel)
     * [Architecture](#architecture)
+      * [Proprocess Layer](#preprocess)
       * [DenseNet121](#dense)
       * [Top Layer](#top)
       * [Summary](#summary)
@@ -71,6 +72,12 @@ The model architecture of this model is simply. This is the detail of model:
 * Dense layer (`4 unit size`, `softmax`)
 
 <h3 id="architecture">Architecture</h3>
+
+<details>
+  
+  <summary><h4 id="preprocess">Preprocess Layer</h4></summary>
+
+</details>
 
 <details>
   

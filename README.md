@@ -76,26 +76,38 @@ The model architecture of this model is simply. This is the detail of model:
 <details>
   
   <summary><h4 id="preprocess">Preprocess Layer</h4></summary>
+  
+  ![preprocess_image](https://github.com/C-Ditech/ML/blob/main/assets/preprocess.png)
 
 </details>
 
 <details>
   
   <summary><h4 id="dense">DenseNet121</h4></summary>
-
+  
+  <img src="https://github.com/C-Ditech/ML/blob/main/assets/densenet121_simple2.png" width=50% height=50%>
+  
+  <img src="https://github.com/C-Ditech/ML/blob/main/assets/densenet121_simple.png" width=75% height=75%>
+ 
 </details>
 
 <details>
   
   <summary><h4 id="top">Top Layer</h4></summary>
+  
+  ![preprocess_image](https://github.com/C-Ditech/ML/blob/main/assets/top.png)
 
 </details>
 
 <details>
   
   <summary><h4 id="summary">Summary</h4></summary>
+  
+  ![preprocess_image](https://github.com/C-Ditech/ML/blob/main/assets/summary.png)
 
 </details> 
 
 <h2 id="result">Result</h2>
+
+
 

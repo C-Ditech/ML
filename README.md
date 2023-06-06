@@ -39,7 +39,15 @@ The images are feces of the poultries with random image sizes and orientations. 
   
 <h2 id="dataprep">Data Preparation</h2>
 
+In data preparation, images will retrieve from each directory with `tensorflow.utils.image_dataset_from_directory` function ([docs](https://www.tensorflow.org/api_docs/python/tf/keras/utils/image_dataset_from_directory)) because this function generate a `tf.data.Dataset` which is can use method `cache` and `prefetch` function ([docs](https://www.tensorflow.org/api_docs/python/tf/data/Dataset)) to optimize I/O operations and speed up training process. Consider dataset above we have 
+
 The image that will be used for training is a polygon image that has been extracted from a complete satellite image. After do some extraction process, then we generate a csv file with polygon ID and it's corresponding damage labels. We will use this csv later to input data into the model using flow_from_dataframe. We will apply multiple augmentations to our training data for all polygon images such as ; horizontal flip, vertical flip, rotation, width and height shift. We resize our input images to 128x128, this number is not too small to cause loss of necessary information, but not too large to cause our CNN performance slowed down.
+
+<div align="center">
+  
+  ![Sample Images](https://github.com/C-Ditech/ML/blob/main/assets/samples.png)
+ 
+</div>
 
 <h2 id="datamodel">Data Modeling</h2>
 asdfasdsadf

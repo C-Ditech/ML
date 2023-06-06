@@ -17,7 +17,9 @@
   * [Data Preparation](#dataprep)
   * [Data Modeling](#datamodel)
     * [Architecture](#architecture)
-    * [Hyperparameter Tuning](#tuning)
+      * [DenseNet121](#dense)
+      * [Top Layer](#top)
+      * [Summary](#summary)
   * [Result](#result)
   
 </details>
@@ -53,14 +55,40 @@ In data preparation, images will retrieve from each directory with [`tensorflow.
     
 </div>
 
-Then we'll apply some augmentations to minimize overfitting the model with our training data like; flip horizontal, flip vertical, random contrast, and random brightness. We make augmentation layers part of our model so it'll run on-device, synchronously with the rest of your layers, and benefit from GPU acceleration. Lastly, we resize our input images to `224x224`, this number have to defined earlier because we'll use transfer in the next step that required a specific image size.
+Then we'll apply some augmentations to minimize overfitting the model with our training data like; flip horizontal, flip vertical, random contrast, and random brightness. We make augmentation layers part of our model so it'll run on-device, synchronously with the rest of your layers, and benefit from GPU acceleration. And then, we resize our input images to `224x224`, this number have to defined earlier because we'll use transfer in the next step that required a specific image size. Lastly, we split the dataset into 2 which are the training dataset and the validation dataset with a ratio of 80% : 20%
 
 <h2 id="datamodel">Data Modeling</h2>
-asdfasdsadf
+In data modeling, we'll do transfer learning to quickly get a good model. If we build a model from scratch it will take a lot of time for training, especially with time-tight projects it is impossible to get a good model. Now, in the transfer learning below, we will use some of the pre-training models provided in the Keras application. The model we chose was one that was less than 50MB in size. 
+
+The model architecture of this model is simply. This is the detail of model:
+
+* Augmentation layer
+* Rescaling layer
+* Pretrained model (`DenseNet121`)
+* Average Pooling
+* Dense layer (`128 unit size`, `relu`)
+* Dropout (`0.3 rate`)
+* Dense layer (`4 unit size`, `softmax`)
 
 <h3 id="architecture">Architecture</h3>
 
-<h3 id="tuning">Hyperparameter Tuning</h3>
+<details>
+  
+  <summary><h4 id="dense">DenseNet121</h4></summary>
+
+</details>
+
+<details>
+  
+  <summary><h4 id="top">Top Layer</h4></summary>
+
+</details>
+
+<details>
+  
+  <summary><h4 id="summary">Summary</h4></summary>
+
+</details> 
 
 <h2 id="result">Result</h2>
 

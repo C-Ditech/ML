@@ -39,15 +39,21 @@ The images are feces of the poultries with random image sizes and orientations. 
   
 <h2 id="dataprep">Data Preparation</h2>
 
-In data preparation, images will retrieve from each directory with [`tensorflow.keras.utils.image_dataset_from_directory`](https://www.tensorflow.org/api_docs/python/tf/keras/utils/image_dataset_from_directory) function because this function generate a [`tf.data.Dataset`](https://www.tensorflow.org/api_docs/python/tf/data/Dataset) which is can use method [`cache`](https://www.tensorflow.org/api_docs/python/tf/data/Dataset#cache) and [`prefetch`](https://www.tensorflow.org/api_docs/python/tf/data/Dataset#prefetch) function to optimize I/O operations and speed up training process. Consider dataset above we have 
-
-The image that will be used for training is a polygon image that has been extracted from a complete satellite image. After do some extraction process, then we generate a csv file with polygon ID and it's corresponding damage labels. We will use this csv later to input data into the model using flow_from_dataframe. We will apply multiple augmentations to our training data for all polygon images such as ; horizontal flip, vertical flip, rotation, width and height shift. We resize our input images to 128x128, this number is not too small to cause loss of necessary information, but not too large to cause our CNN performance slowed down.
-
 <div align="center">
   
   ![Sample Images](https://github.com/C-Ditech/ML/blob/main/assets/samples.png)
  
 </div>
+
+In data preparation, images will retrieve from each directory with [`tensorflow.keras.utils.image_dataset_from_directory`](https://www.tensorflow.org/api_docs/python/tf/keras/utils/image_dataset_from_directory) function because this function generate a [`tf.data.Dataset`](https://www.tensorflow.org/api_docs/python/tf/data/Dataset) which is can use method [`cache`](https://www.tensorflow.org/api_docs/python/tf/data/Dataset#cache) and [`prefetch`](https://www.tensorflow.org/api_docs/python/tf/data/Dataset#prefetch) function to optimize I/O operations and speed up training process. Considering the dataset above, we have an unbalanced class of Newcastle disease. If we are still practicing with unbalanced data, it'll affect real accuracy such as f1, precision, recall, and support. So we'll downsample all classes except the NCD class. The total images of each class must be the same as the others. For each class, we'll make it as large as the NCD class which is 376 images.
+
+<div align="center">
+    
+  <img src="https://i1.wp.com/dataaspirant.com/wp-content/uploads/2020/08/17-undersampling.png" width=50% height=50%>
+    
+</div>
+
+Then we'll apply some augmentations to minimize overfitting the model with our training data like; flip horizontal, flip vertical, random contrast, and random brightness. We make augmentation layers part of our model so it'll run on-device, synchronously with the rest of your layers, and benefit from GPU acceleration. Lastly, we resize our input images to `224x224`, this number have to defined earlier because we'll use transfer in the next step that required a specific image size.
 
 <h2 id="datamodel">Data Modeling</h2>
 asdfasdsadf

@@ -37,11 +37,15 @@ import os
 import uvicorn
 import traceback
 import tensorflow as tf
-
+import numpy as np
+# import files
+# import files
 from pydantic import BaseModel
 from urllib.request import Request
 from fastapi import FastAPI, Response, UploadFile
 from utils import load_image_into_numpy_array
+from PIL import Image
+
 
 # Initialize Model
 # If you already put yout model in the same folder as this main.py
@@ -51,12 +55,15 @@ from utils import load_image_into_numpy_array
 model = tf.keras.models.load_model('./chicken_disease.h5')
 # If you use saved model type uncomment line below
 # model = tf.saved_model.load("./my_model_folder")
+path_file = os.getcwd()
+class_names = ['cocci', 'healthy', 'ncd', 'salmonella']
 
 app = FastAPI()
 
 # This endpoint is for a test (or health check) to this server
 @app.get("/")
 def index():
+    # return os.getcwd()
     return "Hello world from ML endpoint!"
 
 # If your model need text input use this endpoint!
@@ -92,33 +99,29 @@ def predict_image(uploaded_file: UploadFile, response: Response):
         # Checking if it's an image
         if uploaded_file.content_type not in ["image/jpeg", "image/png"]:
             response.status_code = 400
-            return "File is Not an Image"
+            return "File is not an image"
         
-        # In here you will get a numpy array in "image" variable.
-        # You can use this file, to load and do processing
-        # later down the line
-        image = load_image_into_numpy_array(uploaded_file.file.read())
-        print("Image shape:", image.shape)
+        # Save the uploaded file
+        file_path = f"./{uploaded_file.filename}"
+        with open(file_path, "wb") as f:
+            f.write(uploaded_file.file.read())
         
-        # Step 1: (Optional, but you should have one) Do your image preprocessing
-        for IMG_PATH in uploaded.keys():
-            image: Image.Image = tf.keras.utils.load_img(path=IMG_PATH, 
-                                                        target_size=(IMG_SIZE, IMG_SIZE))
-            input_arr: np.ndarray = tf.keras.utils.img_to_array(img=image)
+        # Load and preprocess the image
+        image = tf.keras.utils.load_img(path=file_path, target_size=(224, 224))
+        input_arr = tf.keras.utils.img_to_array(image)
+        input_arr = np.array([input_arr])
 
-        # Step 2: Prepare your data to your model
-            input_arr: np.ndarray = np.array(object=[input_arr])
+        # Predict the data
+        predictions = model.predict(input_arr)
+        predicted_index = np.argmax(predictions)
+        predicted_name = class_names[predicted_index]
+        percentage = round(predictions[0][predicted_index] * 100, 2)
 
-        # Step 3: Predict the data
-            predictions: np.ndarray = model.predict(x=input_arr, verbose="0")
-            predicted_index: np.int64 = np.argmax(a=predictions)
-            
-            predicted_name: str = class_names[predicted_index]
-            percentage: float = round(predictions[0][predicted_index]*100, 2)
+        # Remove the temporary file
+        os.remove(file_path)
 
-        # Step 4: Change the result your determined API output
-        
-        return predicted_name
+        # Change the result to your determined API output
+        return predicted_name,percentage
     
     except Exception as e:
         traceback.print_exc()

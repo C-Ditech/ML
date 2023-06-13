@@ -56,7 +56,7 @@ model = tf.keras.models.load_model('./chicken_disease.h5')
 # If you use saved model type uncomment line below
 # model = tf.saved_model.load("./my_model_folder")
 path_file = os.getcwd()
-class_names = ['cocci', 'healthy', 'ncd', 'salmonella']
+class_names = ['Coccidiosis', 'Healthy', 'New Castle Disease', 'Salmonella']
 
 app = FastAPI()
 
@@ -117,11 +117,22 @@ def predict_image(uploaded_file: UploadFile, response: Response):
         predicted_name = class_names[predicted_index]
         percentage = round(predictions[0][predicted_index] * 100, 2)
 
+        data_prediksi = {
+            "error" : False,
+            "message" : "success",
+            "Result" : {            
+                "penyakit" : "Healthy",
+                "akurasi" : 0.0,
+            }
+        }
+        
+        data_prediksi["Result"] = {"penyakit" : predicted_name, "akurasi" : percentage}
+
         # Remove the temporary file
         os.remove(file_path)
 
         # Change the result to your determined API output
-        return predicted_name,percentage
+        return data_prediksi
     
     except Exception as e:
         traceback.print_exc()
